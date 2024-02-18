@@ -1,0 +1,361 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Ubuntu:wght@300;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+}
+body,head{
+    overflow: hidden;
+}
+.navbar{
+    background-color: rgb(22, 7, 36);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.6rem 11rem;
+}
+.left h1{
+    font-size: 2.9rem;
+    cursor: pointer;
+    text-transform: capitalize;
+    color: #fff;
+}
+.list li a{
+    /* display: inline-block; */
+    text-decoration: none;
+    font-size: 1.3rem;
+    text-transform: capitalize;
+    color: #fff;
+    font-weight: 200;
+    transition: all 0.3s;
+}
+.list li{
+    list-style: none;
+    cursor: pointer;
+}
+.list{
+    display: flex;
+    justify-content: space-between;
+    gap: 3.5rem;
+
+}
+.list li a:hover{
+    color: rgb(22, 7, 36);
+    background-color: #fff;
+    border-radius: 1rem;
+    padding: 0.7rem;
+    font-weight: 400;
+    font-size: 1.4rem;
+}
+.right{
+    display: flex;
+    /* align-items: center; */
+}
+.menu{
+    width: 3rem;
+    height: 3rem;
+    color: #fff;
+}
+.menu{
+    width: 3rem;
+    height: 3rem;
+    color: #fff;
+}
+.mobile{
+    display: none;
+    background: transparent;
+    cursor: pointer;
+}
+.menu[name="close"]{
+    display: none;
+}
+.navbar{
+    position: relative;
+}
+@media(max-width: 62em){
+    .right{
+        width: 100%;
+        height: 100vh;
+        background-color: rgb(22, 7, 36);
+        justify-content: center;
+        display: flex;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translateX(100%);
+        transition: all 1s linear;
+        align-items: center;
+    }
+
+    .mobile{
+        display: block;
+        z-index: 999;
+    }
+
+    .list{
+        align-items: center;
+        flex-direction: column;
+    }
+    .active .right{
+        transform: translateX(0%);
+    }
+    .active .menu[name="close"]{
+        display: block;
+    }
+    .active .menu[name="menu"]{
+        display: none;
+    }
+    .left{
+        display: block;
+        z-index: 999;
+    }
+    .left h1{
+        font-size: 2.4rem;
+    }
+}
+@media(max-width:94em){
+    .navbar{
+        padding: 1.6rem 7rem;
+    }
+    .list{
+        gap: 3rem;
+    }
+}
+@media(max-width:41em){
+    .navbar{
+        padding: 1.6rem 3rem;
+    }
+}
+@media(max-width:25em) {
+    .navbar {
+        padding: 1.6rem 1.4rem;
+    }
+}
+
+
+
+
+/* Recent activity */
+body {
+    font-family: 'lato', sans-serif;
+  }
+  
+.container {
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+h1 {
+    font-size: 30px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+small {
+    font-size: 0.5em;
+}
+
+.responsive-table {
+    li {
+    border-radius: 3px;
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
+    }
+    
+    .table-header {
+    background-color: #7547a7;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: #ffffff;
+    }
+
+    .col-1 {
+    flex-basis: 25%;
+    text-align: center;
+    }
+
+    .col-2 {
+    flex-basis: 50%;
+    text-align: center;
+    }
+
+    .col-3 {
+    flex-basis: 25%;
+    text-align: center;
+    }
+
+    @media all and (max-width: 767px) {
+    .table-header {
+        display: none;
+    }
+    
+    li {
+        display: block;
+        padding: 15px 0;
+    }
+
+    .col {
+        display: flex;
+        padding: 10px 0;
+        &:before {
+        color: #4f316f;
+        padding-right: 10px;
+        content: attr(data-label);
+        flex-basis: 50%;
+        text-align: right;
+        }
+    }
+    }
+  }
+  
+/* .recent{
+    max-width: 800px;
+    margin: 100px ; 
+    margin-right: 300px; 
+    background-color: #fff;
+    padding: 90px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.activity-list {
+    margin-top: 20px;
+}
+
+.activity-item {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+    font-size: 25px;
+}
+
+.date {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.description {
+    color: #333;
+} */
+
+
+
+
+
+/* PROFILE */
+/* body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+}
+
+.profile-photo img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.profile-info {
+    flex: 1;
+}
+
+.name {
+    margin-bottom: 10px;
+}
+
+.bio {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.edit-profile {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+} */
+
+
+
+/* Expenses */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+.money-container {
+    display: flex;
+    justify-content: space-between; /* Distribute space evenly between the divs */
+    max-width: 5000px; /* Set maximum width for the container */
+    margin: 50px auto; /* Center-align the container */
+    padding-left: 90px;
+    padding-right: 90px;
+}
+
+.money {
+    flex: 1; /* Distribute available space equally among the divs */
+    background-color: #461d71; /* Purple color */
+    padding: 20px;
+    border-radius: 22px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: #ffffff; /* Text color */
+    text-align: center; /* Center-align text */
+    height: 200px; /* Adjust the height as needed */
+    margin: 0 10px; /* Add some margin between the divs */
+}
+
+
+ 
+#paise{
+    font-size: 50px;
+}
+
+.total-expenses p {
+    margin: 0;
+}
+
+
+/* pocketpal */
+
+#PocketPal{
+    font-size: 60px;
+    margin-right: 1200px;
+    padding: 5px auto;
+}
+
+#pig{
+    padding: 0px;
+    margin-top: 50px;
+    margin-left: 40px;
+}

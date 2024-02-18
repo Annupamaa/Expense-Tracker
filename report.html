@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Reports</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="report-container">
+        <canvas id="expense-chart"></canvas> <!-- Canvas element for chart -->
+    </div>
+
+    <script>
+    function updateExpenseChart() {
+        var expenses = [
+            { category: 'Groceries', amount: 50.25 },
+            { category: 'Utilities', amount: 30.50 },
+            { category: 'Entertainment', amount: 20.75 }
+        ];
+
+        var categories = expenses.map(expense => expense.category);
+        var amounts = expenses.map(expense => expense.amount);
+
+        var ctx = document.getElementById('expense-chart').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: categories,
+                datasets: [{
+                    label: 'Total Expenses by Category',
+                    data: amounts,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    }
+
+    function showExpenseReport() {
+        var expenseReportSection = document.getElementById("expenseReportSection");
+        expenseReportSection.style.display = "block";
+        updateExpenseChart(); // Update chart when showing the report
+    }
+    </script>
+</body>
+</html>

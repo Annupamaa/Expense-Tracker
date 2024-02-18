@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracking</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="icon/piggy-bank.png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="left">
+        </div>
+        <div class="right">
+            <ul class="list">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="add.html">Expenses</a></li>
+                <li><a href="report.html" onclick="showExpenseReport()">Report</a></li> <!-- Added onclick attribute -->
+                <li><a href="contactus.html">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="mobile" onclick="toggleNavbar()">
+            <ion-icon name="menu" class="menu"></ion-icon>
+            <ion-icon name="close" class="menu"></ion-icon>
+        </div>
+    </nav>
+</header>
+
+<main style="height: 100vh; overflow-y: auto;"> 
+    <div style="display: inline-block; margin-left: 75px;">
+        <img src="icon/piggy-bank.png" alt="Piggy Bank Icon" height="50px" id="pig" >
+        <h1 id="PocketPal" style="display: inline-block;  " ><i class="fi fi-ts-piggy-bank"></i>PocketPal</h1>
+    </div>
+
+    <div class="money-container">
+        <div class="money" id="totalExpensesDiv">
+            <h1 style="font-size: 40px;">Total Expenses</h1>
+            <div class="total-expenses" id="total-expenses" style="font-size: 40px;">
+                <!-- Total expenses will be added dynamically -->
+            </div>
+        </div>
+
+        <div class="money">
+            <h1 style="font-size: 40px;">Remaining</h1>
+            <h1 style="font-size: 40px;">3730$</h1>
+            <div class="remaining-amount" id="remaining-amount" style="font-size: 40px;">
+                <!-- Remaining amount will be added dynamically -->
+            </div>
+        </div>
+
+        <div class="money">
+            <h1 style="font-size: 40px;">Total Budget</h1>
+            <h1 style="font-size: 40px;">10000$</h1>
+            <div class="total-budget" id="total-budget" style="font-size: 40px;">
+                <!-- Total budget will be added dynamically -->
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <h1>Recent activity</h1>
+        <ul class="responsive-table">
+        <li class="table-header">
+            <div class="col col-1">Date</div>
+            <div class="col col-2">Category</div>
+            <div class="col col-3">Amount</div>
+        </li>
+        <li class="table-row">
+            <!-- <div class="col col-1" data-label="Date">2024-02-18</div>
+            <div class="col col-2" data-label="Category">Groceries</div>
+            <div class="col col-3" data-label="Amount">$50</div> -->
+        </li>
+        <!-- Add more table rows dynamically -->
+        </ul>
+    </div>
+
+    <!-- Expense Report Section (Initially Hidden) -->
+    <div id="expenseReportSection" style="display: none;">
+        <div class="report-container">
+            <canvas id="expense-chart"></canvas> <!-- Canvas element for chart -->
+        </div>
+    </div>
+
+</main>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const expenses = JSON.parse(localStorage.getItem('expenses')) || [];
+
+    //     const budget = parseFloat(prompt("Enter your total budget:"));
+
+        // // Set total budget
+        // const totalBudgetDiv = document.getElementById('total-budget');
+        // totalBudgetDiv.textContent = `$${budget.toFixed(2)}`;
+
+        // Update remaining amount
+        // const remainingAmount = budget - expenses.reduce((total, expense) => total + parseFloat(expense.amount), 0);
+        // const remainingAmountDiv = document.getElementById('remaining-amount');
+        // remainingAmountDiv.textContent = `$${remainingAmount.toFixed(2)}`;
+
+
+        // Display each expense in the recent activity list
+        const activityList = document.querySelector('.responsive-table');
+        expenses.forEach(expense => {
+            const item = document.createElement('li');
+            item.classList.add('table-row');
+            item.innerHTML = `
+                <div class="col col-1" data-label="Date">${expense.date}</div>
+                <div class="col col-2" data-label="Category">${expense.category}</div>
+                <div class="col col-3" data-label="Amount">$${expense.amount}</div>
+            `;
+            activityList.appendChild(item);
+        });
+
+        // Calculate total expenses
+        const totalExpensesDiv = document.getElementById('total-expenses');
+        const totalExpenses = expenses.reduce((total, expense) => total + parseFloat(expense.amount), 0);
+        totalExpensesDiv.textContent = `$${totalExpenses.toFixed(2)}`;
+    });
+
+    // Function to add an expense
+    function addItem() {
+        const amount = document.getElementById('amount').value;
+        const date = document.getElementById('date').value;
+        const category = document.getElementById('category').value;
+
+        if (amount.trim() === '' || date.trim() === '' || category.trim() === '') {
+            alert('Please fill out all fields');
+            return;
+        }
+
+        const expense = { date, category, amount };
+        const expenses = JSON.parse(localStorage.getItem('expenses')) || [];
+        expenses.push(expense);
+        localStorage.setItem('expenses', JSON.stringify(expenses));
+
+        const transactionList = document.querySelector('.responsive-table');
+        const newItem = document.createElement('li');
+        newItem.classList.add('table-row');
+        newItem.innerHTML = `
+            <div class="col col-1" data-label="Date">${date}</div>
+            <div class="col col-2" data-label="Category">${category}</div>
+            <div class="col col-3" data-label="Amount">$${amount}</div>
+        `;
+        transactionList.appendChild(newItem);
+
+        const totalExpensesDiv = document.getElementById('total-expenses');
+        const totalExpenses = expenses.reduce((total, expense) => total + parseFloat(expense.amount), 0);
+        totalExpensesDiv.textContent = `$${totalExpenses.toFixed(2)}`;
+
+        alert('Expense added successfully!');
+        document.getElementById('expense-form').reset();
+    }
+</script>
+
+
+</body>
+</html>

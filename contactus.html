@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+         /* Styles for Contact Us page */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.navbar .list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar .list li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.navbar .list li:last-child {
+    margin-right: 0;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.mobile {
+    display: none;
+}
+
+.contact-section {
+    max-width: 1200px; /* Increase the maximum width */
+    margin: 50px auto;
+    padding: 40px; /* Increase the padding */
+    background-color: #fff;
+    border-radius: 20px; /* Increase the border radius */
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+}
+
+.contact-section h1 {
+    margin-bottom: 30px; /* Increase the margin */
+    color: #7329be; /* Violet color for the heading */
+}
+
+.contact-section p {
+    margin-bottom: 30px; /* Increase the margin */
+}
+
+.form-group {
+    margin-bottom: 30px; /* Increase the margin */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px; /* Increase the margin */
+    color: #7329be; /* Violet color for the labels */
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 15px; /* Increase the padding */
+    border: 1px solid #ccc;
+    border-radius: 10px; /* Increase the border radius */
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+button[type="submit"] {
+    padding: 15px 30px; /* Increase the padding */
+    background-color: #7329be; /* Violet color for the button */
+    color: #fff;
+    border: none;
+    border-radius: 10px; /* Increase the border radius */
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #501b84; /* Darker violet color on hover */
+}
+
+    </style>
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="left">
+        </div>
+        <div class="right">
+            <ul class="list">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="add.html">Expenses</a></li>
+                <li><a href="report.html" onclick="showExpenseReport()">Report</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="mobile" onclick="toggleNavbar()">
+            <ion-icon name="menu" class="menu"></ion-icon>
+            <ion-icon name="close" class="menu"></ion-icon>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <section class="contact-section">
+        <h1 style="font-size: 50px;">Contact Us</h1>
+        
+        <form id="contact-form">
+            <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Your Message</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+</main>
+
+<footer>
+    <!-- Footer content here -->
+</footer>
+
+<script src="contact_script.js"></script>
+</body>
+</html>
